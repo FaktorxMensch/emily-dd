@@ -1,6 +1,6 @@
 <template>
   <div v-if="event?.titel">
-    <h1 style="position:absolute;top:62%;left:68%;font-size:1200%;transform:rotate(10deg);color:white;z-index:200">
+    <h1 style="position:absolute;top:61.8%;left:68.4%;font-size:9em;transform:rotate(10deg);color:white;z-index:200">
       SCHULUNG</h1>
 
     <img src="/emily_bg.png"
@@ -11,13 +11,13 @@
 
     <div
         style="position:absolute;overflow:hidden;z-index:2;width:64%;padding:3%;height:100%;top:0;left:0;display:flex;flex-direction:column;text-shadow: 0 5px 10px #0001;">
-      <h1 style="color:white;font-size:14.5em;line-height:1;max-height:55vh;overflow:hidden;">
+      <h1 style="color:white;font-size:10.5em;line-height:1;max-height:55vh;overflow:hidden;">
         {{ event.titel }}</h1>
       <h2 style="color:white;font-size:6em;line-height:1;margin:1% 0">{{ event.datum }}</h2>
       <div style="flex:1"></div>
       <div class="flex gap-10">
         <img :src="generateQRCodeUrl()" alt="QR Code" style="height:180px;align-self:start;mix-blend-mode: screen;"/>
-        <h2 style="color:white;font-size:6em;line-height:1">*Anmeldung unter <br/>
+        <h2 style="color:white;font-size:5.5em;line-height:1">*Anmeldung unter <br/>
           <span style="color:#a00">emily.look-think-deliver.com</span>
         </h2>
       </div>
