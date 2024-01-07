@@ -12,4 +12,8 @@ const nextSlide = () => {
   slideIndex.value = (slideIndex.value + 1) % maxSlide
 }
 setInterval(nextSlide, 10000)
+// reload the page every hour
+setTimeout(() => {
+  window.location.reload()
+}, 60 * 60 * 1000)
 </script>
