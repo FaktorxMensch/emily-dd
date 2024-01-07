@@ -11,5 +11,5 @@ const maxSlide = 3
 const nextSlide = () => {
   slideIndex.value = (slideIndex.value + 1) % maxSlide
 }
-setInterval(nextSlide, 500)
+setInterval(nextSlide, 10000)
 </script>
