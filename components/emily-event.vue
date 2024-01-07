@@ -1,5 +1,5 @@
 <template>
-  <div v-if="event.titel">
+  <div v-if="event?.titel">
     <h1 style="position:absolute;top:62%;left:68%;font-size:1200%;transform:rotate(10deg);color:white;z-index:200">
       SCHULUNG</h1>
 
@@ -34,19 +34,27 @@ const event = ref({
 
 onMounted(async () => {
   // versuche das aus dem local storage zu holen
-  const cachedEvent = localStorage.getItem('emily-event.vue')
-  if (cachedEvent) {
-    event.value = JSON.parse(cachedEvent)
+  try {
+    const cachedEvent = localStorage.getItem('emily-event.vue')
+    if (cachedEvent && cachedEvent !== 'undefined') {
+      console.log('found cached event', cachedEvent)
+      let d = JSON.parse(cachedEvent)
+      event.value = d[Math.floor(Math.random() * d.length)]
+    }
+  } catch (e) {
+    console.log('could not parse cached event')
+    console.error(e)
   }
   // hole das aus der api
   await fetch('https://emily.look-think-deliver.com/wp-json/mein-event-api/v1/naechste-termine')
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        event.value = data[0]
+        // select a random element
+        event.value = data[Math.floor(Math.random() * data.length)]
       })
   // cache das im local storage
-  localStorage.setItem('emily-event.vue', JSON.stringify(event.value))
+  localStorage.setItem('emily-event.vue', JSON.stringify(data.value))
 })
 
 const generateQRCodeUrl = () => {
@@ -67,6 +75,7 @@ const generateQRCodeUrl = () => {
 body {
   background: #93B13A
 }
+
 @font-face {
   font-family: 'Emily';
   src: url('/emily.ttf') format('truetype');
