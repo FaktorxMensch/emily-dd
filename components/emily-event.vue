@@ -35,7 +35,7 @@ const event = ref({
 onMounted(async () => {
   // versuche das aus dem local storage zu holen
   try {
-    const cachedEvent = localStorage.getItem('emily-event.vue')
+    const cachedEvent = localStorage.getItem('emily-event')
     if (cachedEvent && cachedEvent !== 'undefined') {
       console.log('found cached event', cachedEvent)
       let d = JSON.parse(cachedEvent)
@@ -45,6 +45,27 @@ onMounted(async () => {
     console.log('could not parse cached event')
     console.error(e)
   }
+
+  /// versuche das datum aus dem local storage zu holen
+  try {
+    const refreshedAt = localStorage.getItem('refreshed_at_date')
+    if (refreshedAt && refreshedAt !== 'undefined') {
+      console.log('found cached date', refreshedAt)
+      const refreshedAtDate = new Date(refreshedAt)
+      const now = new Date()
+      const diff = now - refreshedAtDate
+      const hours = Math.floor(diff / 1000 / 60 / 60)
+      console.log('hours since last refresh', hours)
+      if (hours < 1) {
+        console.log('refreshing too soon, not refreshing')
+        return
+      }
+    }
+  } catch (e) {
+    console.log('could not parse cached date')
+    console.error(e)
+  }
+
   // hole das aus der api
   await fetch('https://emily.look-think-deliver.com/wp-json/mein-event-api/v1/naechste-termine')
       .then((res) => res.json())
@@ -52,9 +73,12 @@ onMounted(async () => {
         console.log(data)
         // select a random element
         event.value = data[Math.floor(Math.random() * data.length)]
+
+        // cache das im local storage
+        localStorage.setItem('emily-event', JSON.stringify(data))
+        // merke dir das datum
+        localStorage.setItem('refreshed_at_date', new Date().toISOString())
       })
-  // cache das im local storage
-  localStorage.setItem('emily-event.vue', JSON.stringify(data.value))
 })
 
 const generateQRCodeUrl = () => {
