@@ -54,7 +54,7 @@ onMounted(async () => {
       const refreshedAtDate = new Date(refreshedAt)
       const now = new Date()
       const diff = now - refreshedAtDate
-      const hours = Math.floor(diff / 1000 / 60) // / 60
+      const hours = Math.floor(diff / 1000 / 60 / 60)
       console.log('hours since last refresh', hours)
       if (hours < 1) {
         console.log('refreshing too soon, not refreshing')
