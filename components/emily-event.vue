@@ -11,7 +11,7 @@
 
     <div
         style="position:absolute;overflow:hidden;z-index:2;width:64%;padding:3%;height:100%;top:0;left:0;display:flex;flex-direction:column;text-shadow: 0 5px 10px #0001;">
-      <h1 style="color:white;font-size:22.5em;line-height:1;max-height:55vh;overflow:hidden;">
+      <h1 style="color:white;font-size:24.5em;line-height:1;max-height:55vh;overflow:hidden;">
         {{ event.titel }}</h1>
       <h2 style="color:white;font-size:10em;line-height:1;margin:1% 0">{{ event.datum }}</h2>
       <div style="flex:1"></div>
