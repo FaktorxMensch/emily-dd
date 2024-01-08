@@ -16,7 +16,7 @@
       <h2 style="color:white;font-size:10em;line-height:1;margin:1% 0">{{ event.datum }}</h2>
       <div style="flex:1"></div>
       <div class="flex gap-10">
-        <img :src="generateQRCodeUrl()" alt="QR Code" style="height:15em;align-self:start;mix-blend-mode: screen;"/>
+        <img :src="generateQRCodeUrl()" alt="QR Code" style="height:16em;align-self:start;mix-blend-mode: screen;"/>
         <h2 style="color:white;font-size:8.5em;line-height:1">*Anmeldung unter <br/>
           <span style="color:#a00">emily.look-think-deliver.com</span>
         </h2>
@@ -54,7 +54,7 @@ onMounted(async () => {
       const refreshedAtDate = new Date(refreshedAt)
       const now = new Date()
       const diff = now - refreshedAtDate
-      const hours = Math.floor(diff / 1000 / 60 / 60)
+      const hours = Math.floor(diff / 1000 / 60) // / 60
       console.log('hours since last refresh', hours)
       if (hours < 1) {
         console.log('refreshing too soon, not refreshing')
