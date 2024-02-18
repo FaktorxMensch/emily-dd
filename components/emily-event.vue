@@ -33,7 +33,7 @@ const event = ref({
 })
 
 const featureImage = computed(() => {
-  return '/placeholder/bg' + Math.ceil(Math.random() * 5) + '.jpeg'
+  return '/placeholder/crop' + Math.ceil(Math.random() * 5) + '.jpg'
   // return event.value.bild_url
 })
 const titleSanitized = computed(() => {
