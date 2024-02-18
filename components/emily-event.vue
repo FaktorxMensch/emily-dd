@@ -3,7 +3,7 @@
     <h1 style="position:absolute;top:61.8%;left:68.4%;font-size:17em;transform:rotate(10deg);color:white;z-index:200">
       SCHULUNG</h1>
 
-    <img src="/emily_bg.png"
+    <img src="/emily_bg.svg"
          class="object-cover h-full w-full absolute top-0 left-0" style="z-index:1;"/>
     <img
         :src="featureImage"

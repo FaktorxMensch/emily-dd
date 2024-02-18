@@ -7,8 +7,6 @@
   </div>
 </template>
 <script setup>
-import ExternalImage from "~/components/external-image.vue";
-
 const slideIndex = ref(0)
 const maxInternalSlide = 3
 const maxSlide = computed(() => maxInternalSlide + externalImages.value.length)
