@@ -17,7 +17,7 @@ const nextSlide = () => {
 const isDev = new Date() < new Date('2024-02-19')
 
 if (isDev) {
-  setInterval(nextSlide, 1000)
+  setInterval(nextSlide, 5000)
 } else {
   setInterval(nextSlide, 30000)
 }
