@@ -8,7 +8,6 @@
     <img
         :src="featureImage"
         class="object-cover h-full" style="width:38%;position:absolute;bottom:0;right:0;z-index:0;"/>
-
     <div
         style="position:absolute;overflow:hidden;z-index:2;width:64%;padding:3%;height:100%;top:0;left:0;display:flex;flex-direction:column;text-shadow: 0 5px 10px #0001;">
       <h1 style="color:white;font-size:24.5em;line-height:1;max-height:55vh;overflow:hidden;">
