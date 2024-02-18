@@ -1,6 +1,6 @@
 <template>
   <div class="h-full w-full inset-0 fixed"
-       style="background:url('/bild2.jpg');background-size:cover;background-position:center;"></div>
+       style="background:url('/bild2.jpg');background-size:cover;"></div>
   <div class="h-full w-full inset-0 fixed"
        :style="'background:url(' + src + '); background-size:cover;background-position:center;'"></div>
 </template>
