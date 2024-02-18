@@ -11,9 +11,10 @@ const maxSlide = 3
 const nextSlide = () => {
   slideIndex.value = (slideIndex.value + 1) % maxSlide
 }
-setInterval(nextSlide, 30000)
-// reload the page every hour
-setTimeout(() => {
-  window.location.reload()
-}, 60 * 60 * 1000)
+// if its before 20. feb, reload every 1 second
+if (new Date() < new Date('2024-02-20')) {
+  setInterval(nextSlide, 1000)
+} else {
+  setInterval(nextSlide, 30000)
+}
 </script>

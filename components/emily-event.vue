@@ -6,13 +6,13 @@
     <img src="/emily_bg.png"
          class="object-cover h-full w-full absolute top-0 left-0" style="z-index:1;"/>
     <img
-        :src="event.bild_url"
+        :src="featureImage"
         class="object-cover h-full" style="width:38%;position:absolute;bottom:0;right:0;z-index:0;"/>
 
     <div
         style="position:absolute;overflow:hidden;z-index:2;width:64%;padding:3%;height:100%;top:0;left:0;display:flex;flex-direction:column;text-shadow: 0 5px 10px #0001;">
       <h1 style="color:white;font-size:24.5em;line-height:1;max-height:55vh;overflow:hidden;">
-        {{ event.titel }}</h1>
+        {{ titleSanitized }}</h1>
       <h2 style="color:white;font-size:10em;line-height:1;margin:1% 0">{{ event.datum }}</h2>
       <div style="flex:1"></div>
       <div class="flex gap-10">
@@ -30,6 +30,24 @@ const event = ref({
   datum: '',
   bild_url: '',
   link: ''
+})
+
+const featureImage = computed(() => {
+  return '/placeholder/bg' + Math.ceil(Math.random() * 5) + '.jpeg'
+  // return event.value.bild_url
+})
+const titleSanitized = computed(() => {
+  let titel = event.value.titel
+
+  // filter html encoded characters like &auml; to ä but also &#39; and 	&#8211; and #
+  titel = titel.replace(/&[a-zA-Z0-9#]+;/g, (match) => {
+    const el = document.createElement('div')
+    el.innerHTML = match
+    return el.innerText
+  })
+
+  // erlaube alles was a-z, A-Z, 0-9, ÄÜÖßäüö, und Leerzeichen ist
+  return titel.replace(/[^a-zA-Z0-9ÄÜÖßäüö ]/g, '')
 })
 
 onMounted(async () => {
