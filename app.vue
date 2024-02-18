@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="cursor-hidden">
     <emily-event v-if="slideIndex===0"/>
     <img v-else-if="slideIndex<maxInternalSlide" :src="`/bild${slideIndex}.jpg`" class="object-cover h-full w-full"/>
     <external-image v-else :src="externalImages[slideIndex - maxInternalSlide]"/>
   </div>
-<!--  <div class="fixed top-0 left-0 text-8xl bg-black text-white" style="z-index:100000"> <h1>Slide: {{ slideIndex }}</h1> </div>-->
+  <!--  <div class="fixed top-0 left-0 text-8xl bg-black text-white" style="z-index:100000"> <h1>Slide: {{ slideIndex }}</h1> </div>-->
   <img src="/bild2.jpg" class="object-cover h-full w-full fixed inset-0 duration-500 transition-opacity"
        :class="showTransition ? 'opacity-100' : 'opacity-0'"
        style="z-index:100000;"/>
@@ -37,3 +37,8 @@ if (isDev) {
 // TODO: here later just add image urls and they will be loaded and displayed
 const externalImages = ref([])
 </script>
+<style>
+.cursor-hidden, body, * {
+  cursor: none;
+}
+</style>
