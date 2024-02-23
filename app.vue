@@ -1,6 +1,7 @@
 <template>
   <div class="cursor-hidden">
-    <emily-event v-if="slideIndex===0"/>
+    <emily-stoff v-if="slideIndex===2"/>
+    <emily-event v-else-if="slideIndex===0"/>
     <img v-else-if="slideIndex<maxInternalSlide" :src="`/bild${slideIndex}.jpg`" class="object-cover h-full w-full"/>
     <external-image v-else :src="externalImages[slideIndex - maxInternalSlide]"/>
   </div>
@@ -11,7 +12,7 @@
 </template>
 <script setup>
 const slideIndex = ref(0)
-const maxInternalSlide = 2 // dec to 2 from 3 because we overlay bild2.jpg for transtions
+const maxInternalSlide = 3 // dec to 2 from 3 because we overlay bild2.jpg for transtions
 const maxSlide = computed(() => maxInternalSlide + externalImages.value.length)
 
 const showTransition = ref(false)
@@ -26,7 +27,7 @@ const nextSlide = async () => {
   }, 2200)
 }
 
-const isDev = new Date() < new Date('2024-02-17')
+const isDev = new Date() < new Date('2024-02-25')
 
 if (isDev) {
   setInterval(nextSlide, 5000)
