@@ -27,7 +27,7 @@ const nextSlide = async () => {
   }, 2200)
 }
 
-const isDev = new Date() < new Date('2024-02-25')
+const isDev = process.env.NODE_ENV === 'development'
 
 if (isDev) {
   setInterval(nextSlide, 5000)
