@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            background: #EAEFD8;
+            color: #8DAF18;
+            font-size: 2em;
+            font-family: Arial;
+            text-align: center;
+            position: relative;
+            inset: 0;
+            height: 100vh;
+            padding-top: 3em;
+            padding-left: 3em;
+            padding-right: 3em;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #progressBarContainer {
+            width: 80%;
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 100px;
+            border: 2px solid #8DAF18;
+        }
+
+        #progressBar {
+            width: 1%;
+            height: 60px;
+            background-color: #8DAF18;
+            transition: width 0.5s;
+        }
+
+        #errorMessage {
+            width: 60%;
+            color:black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="anzeige">Anzeige wird gestartet ...</h1>
+<div id="progressBarContainer">
+    <div id="progressBar"></div>
+</div>
+<p id="errorMessage">Fehler: Es scheint, als hätte es zu lange gedauert, und die Seite konnte nicht korrekt geladen werden.</p>
+<div style="flex:1"></div>
+<img src="https://emily.look-think-deliver.com/wp-content/uploads/2023/12/footer-linie.jpg">
+
+<script>
+    let duration = 150; // Dauer des Countdowns in Sekunden
+    let elapsed = 0; // Verstrichene Zeit
+    const progressBar = document.getElementById('progressBar');
+    const errorMessage = document.getElementById('errorMessage');
+    const anzeigeH1 = document.getElementById('anzeige');
+
+    const updateInterval = 1000; // Aktualisierungsintervall in Millisekunden (1000 ms = 1 s)
+
+    const intervalId = setInterval(() => {
+        elapsed++;
+        const percentage = (elapsed / duration) * 100;
+        progressBar.style.width = `${percentage}%`;
+
+        if (elapsed >= duration) {
+            clearInterval(intervalId);
+            errorMessage.style.display = 'block';
+            anzeigeH1.innerHTML = 'Internetverbindung prüfen';
+        }
+    }, updateInterval);
+
+</script>
+
+</body>
+</html>
+
